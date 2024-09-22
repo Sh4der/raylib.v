@@ -1,4 +1,4 @@
-# raylib.v for raylib v4.2.0
+# raylib.v for raylib v5.0
 ![raylib.v icon](icon.png)
 
 Have a problem? raylib.v currently requires the `master` branch of V, so please run `v up` before filing any issues.
