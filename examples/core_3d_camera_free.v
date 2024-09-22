@@ -6,10 +6,10 @@ const screen_height = 450
 fn main() {
 	r.init_window(screen_width, screen_height, 'raylib.v [core] example - 3D camera free'.str)
 	mut camera := r.Camera{
-		position: r.Vector3{10.0, 10.0, 10.0}
-		target: r.Vector3{0.0, 0.0, 0.0}
-		up: r.Vector3{0.0, 1.0, 0.0}
-		fovy: 45.0
+		position:   r.Vector3{10.0, 10.0, 10.0}
+		target:     r.Vector3{0.0, 0.0, 0.0}
+		up:         r.Vector3{0.0, 1.0, 0.0}
+		fovy:       45.0
 		projection: r.camera_perspective
 	}
 	mut cube_position := r.Vector3{0.0, 0.0, 0.0}

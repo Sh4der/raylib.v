@@ -16,9 +16,9 @@ fn main() {
 	mut color_recs := []r.Rectangle{len: max_colors_count}
 	for i in 0 .. max_colors_count {
 		color_recs[i] = r.Rectangle{
-			x: 10.0 + 30.0 * i + 2.0 * i
-			y: 10.0
-			width: 30.0
+			x:      10.0 + 30.0 * i + 2.0 * i
+			y:      10.0
+			width:  30.0
 			height: 30.0
 		}
 	}
