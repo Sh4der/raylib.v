@@ -1824,40 +1824,16 @@ pub fn get_gesture_pinch_angle() f32 {
 	return C.GetGesturePinchAngle()
 }
 
-fn C.SetCameraMode(camera Camera, mode int)
+fn C.UpdateCamera(camera &Camera, mode int)
 @[inline]
-pub fn set_camera_mode(camera Camera, mode int) {
-	C.SetCameraMode(camera, mode)
+pub fn update_camera(camera &Camera, mode int) {
+	C.UpdateCamera(camera, mode)
 }
 
-fn C.UpdateCamera(camera &Camera)
+fn C.UpdateCameraPro(amera &Camera, movement Vector3, rotation Vector3, zoom f32)
 @[inline]
-pub fn update_camera(camera &Camera) {
-	C.UpdateCamera(camera)
-}
-
-fn C.SetCameraPanControl(keyPan int)
-@[inline]
-pub fn set_camera_pan_control(keyPan int) {
-	C.SetCameraPanControl(keyPan)
-}
-
-fn C.SetCameraAltControl(keyAlt int)
-@[inline]
-pub fn set_camera_alt_control(keyAlt int) {
-	C.SetCameraAltControl(keyAlt)
-}
-
-fn C.SetCameraSmoothZoomControl(keySmoothZoom int)
-@[inline]
-pub fn set_camera_smooth_zoom_control(keySmoothZoom int) {
-	C.SetCameraSmoothZoomControl(keySmoothZoom)
-}
-
-fn C.SetCameraMoveControls(keyFront int, keyBack int, keyRight int, keyLeft int, keyUp int, keyDown int)
-@[inline]
-pub fn set_camera_move_controls(keyFront int, keyBack int, keyRight int, keyLeft int, keyUp int, keyDown int) {
-	C.SetCameraMoveControls(keyFront, keyBack, keyRight, keyLeft, keyUp, keyDown)
+pub fn update_camera_pro(camera &Camera, movement Vector3, rotation Vector3, zoom f32) {
+	C.UpdateCameraPro(camera, movement, rotation, zoom)
 }
 
 fn C.SetShapesTexture(texture Texture2D, source Rectangle)
@@ -1900,18 +1876,6 @@ fn C.DrawLineBezier(startPos Vector2, endPos Vector2, thick f32, color Color)
 @[inline]
 pub fn draw_line_bezier(startPos Vector2, endPos Vector2, thick f32, color Color) {
 	C.DrawLineBezier(startPos, endPos, thick, color)
-}
-
-fn C.DrawLineBezierQuad(startPos Vector2, endPos Vector2, controlPos Vector2, thick f32, color Color)
-@[inline]
-pub fn draw_line_bezier_quad(startPos Vector2, endPos Vector2, controlPos Vector2, thick f32, color Color) {
-	C.DrawLineBezierQuad(startPos, endPos, controlPos, thick, color)
-}
-
-fn C.DrawLineBezierCubic(startPos Vector2, endPos Vector2, startControlPos Vector2, endControlPos Vector2, thick f32, color Color)
-@[inline]
-pub fn draw_line_bezier_cubic(startPos Vector2, endPos Vector2, startControlPos Vector2, endControlPos Vector2, thick f32, color Color) {
-	C.DrawLineBezierCubic(startPos, endPos, startControlPos, endControlPos, thick, color)
 }
 
 fn C.DrawLineStrip(points &Vector2, pointCount int, color Color)
@@ -2209,22 +2173,16 @@ pub fn gen_image_color(width int, height int, color Color) Image {
 	return C.GenImageColor(width, height, color)
 }
 
-fn C.GenImageGradientV(width int, height int, top Color, bottom Color) Image
-@[inline]
-pub fn gen_image_gradient_v(width int, height int, top Color, bottom Color) Image {
-	return C.GenImageGradientV(width, height, top, bottom)
-}
-
-fn C.GenImageGradientH(width int, height int, left Color, right Color) Image
-@[inline]
-pub fn gen_image_gradient_h(width int, height int, left Color, right Color) Image {
-	return C.GenImageGradientH(width, height, left, right)
-}
-
 fn C.GenImageGradientRadial(width int, height int, density f32, inner Color, outer Color) Image
 @[inline]
 pub fn gen_image_gradient_radial(width int, height int, density f32, inner Color, outer Color) Image {
 	return C.GenImageGradientRadial(width, height, density, inner, outer)
+}
+
+fn C.GenImageGradientSquare(width int, height int, density f32, inner Color, outer Color) Image
+@[inline]
+pub fn gen_image_gradient_square(width int, height int, density f32, inner Color, outer Color) Image {
+	return C.GenImageGradientSquare(width, height, density, inner, outer)
 }
 
 fn C.GenImageChecked(width int, height int, checksX int, checksY int, col1 Color, col2 Color) Image
@@ -2629,18 +2587,6 @@ pub fn draw_texture_rec(texture Texture2D, source Rectangle, position Vector2, t
 	C.DrawTextureRec(texture, source, position, tint)
 }
 
-fn C.DrawTextureQuad(texture Texture2D, tiling Vector2, offset Vector2, quad Rectangle, tint Color)
-@[inline]
-pub fn draw_texture_quad(texture Texture2D, tiling Vector2, offset Vector2, quad Rectangle, tint Color) {
-	C.DrawTextureQuad(texture, tiling, offset, quad, tint)
-}
-
-fn C.DrawTextureTiled(texture Texture2D, source Rectangle, dest Rectangle, origin Vector2, rotation f32, scale f32, tint Color)
-@[inline]
-pub fn draw_texture_tiled(texture Texture2D, source Rectangle, dest Rectangle, origin Vector2, rotation f32, scale f32, tint Color) {
-	C.DrawTextureTiled(texture, source, dest, origin, rotation, scale, tint)
-}
-
 fn C.DrawTexturePro(texture Texture2D, source Rectangle, dest Rectangle, origin Vector2, rotation f32, tint Color)
 @[inline]
 pub fn draw_texture_pro(texture Texture2D, source Rectangle, dest Rectangle, origin Vector2, rotation f32, tint Color) {
@@ -2651,12 +2597,6 @@ fn C.DrawTextureNPatch(texture Texture2D, nPatchInfo NPatchInfo, dest Rectangle,
 @[inline]
 pub fn draw_texture_n_patch(texture Texture2D, nPatchInfo NPatchInfo, dest Rectangle, origin Vector2, rotation f32, tint Color) {
 	C.DrawTextureNPatch(texture, nPatchInfo, dest, origin, rotation, tint)
-}
-
-fn C.DrawTexturePoly(texture Texture2D, center Vector2, points &Vector2, texcoords &Vector2, pointCount int, tint Color)
-@[inline]
-pub fn draw_texture_poly(texture Texture2D, center Vector2, points &Vector2, texcoords &Vector2, pointCount int, tint Color) {
-	C.DrawTexturePoly(texture, center, points, texcoords, pointCount, tint)
 }
 
 fn C.Fade(color Color, alpha f32) Color
@@ -3042,18 +2982,6 @@ pub fn draw_cube_wires_v(position Vector3, size Vector3, color Color) {
 	C.DrawCubeWiresV(position, size, color)
 }
 
-fn C.DrawCubeTexture(texture Texture2D, position Vector3, width f32, height f32, length f32, color Color)
-@[inline]
-pub fn draw_cube_texture(texture Texture2D, position Vector3, width f32, height f32, length f32, color Color) {
-	C.DrawCubeTexture(texture, position, width, height, length, color)
-}
-
-fn C.DrawCubeTextureRec(texture Texture2D, source Rectangle, position Vector3, width f32, height f32, length f32, color Color)
-@[inline]
-pub fn draw_cube_texture_rec(texture Texture2D, source Rectangle, position Vector3, width f32, height f32, length f32, color Color) {
-	C.DrawCubeTextureRec(texture, source, position, width, height, length, color)
-}
-
 fn C.DrawSphere(centerPos Vector3, radius f32, color Color)
 @[inline]
 pub fn draw_sphere(centerPos Vector3, radius f32, color Color) {
@@ -3130,12 +3058,6 @@ fn C.UnloadModel(model Model)
 @[inline]
 pub fn unload_model(model Model) {
 	C.UnloadModel(model)
-}
-
-fn C.UnloadModelKeepMeshes(model Model)
-@[inline]
-pub fn unload_model_keep_meshes(model Model) {
-	C.UnloadModelKeepMeshes(model)
 }
 
 fn C.GetModelBoundingBox(model Model) BoundingBox
@@ -3515,24 +3437,6 @@ fn C.ResumeSound(sound Sound)
 @[inline]
 pub fn resume_sound(sound Sound) {
 	C.ResumeSound(sound)
-}
-
-fn C.PlaySoundMulti(sound Sound)
-@[inline]
-pub fn play_sound_multi(sound Sound) {
-	C.PlaySoundMulti(sound)
-}
-
-fn C.StopSoundMulti()
-@[inline]
-pub fn stop_sound_multi() {
-	C.StopSoundMulti()
-}
-
-fn C.GetSoundsPlaying() int
-@[inline]
-pub fn get_sounds_playing() int {
-	return C.GetSoundsPlaying()
 }
 
 fn C.IsSoundPlaying(sound Sound) bool
