@@ -2862,9 +2862,9 @@ pub fn text_length(text &i8) u32 {
 	return C.TextLength(text)
 }
 
-fn C.TextFormat(text &i8, args ...string) i8
+fn C.TextFormat(text &i8, args ...&i8) i8
 @[inline]
-pub fn text_format(text &i8, args ...string) i8 {
+pub fn text_format(text &i8, args ...&i8) i8 {
 	return C.TextFormat(text, ...args)
 }
 
