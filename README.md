@@ -1,4 +1,6 @@
-# raylib.v for raylib v5.0
+# raylib.v for raylib v5.5
+This is repo is work in progress. Most things should work, some functions may need to be fixed. My current goal is to translate all examples from raylib to raylibv to test the wrapper.
+
 ![raylib.v icon](icon.png)
 
 Have a problem? raylib.v currently requires the `master` branch of V, so please run `v up` before filing any issues.
