@@ -45,7 +45,7 @@ fn main() {
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
-	for !r.window_should_close() // Detect window close button or ESC key {
+	for !r.window_should_close() {
 		// Update
 		//----------------------------------------------------------------------------------
 		match current_screen {
