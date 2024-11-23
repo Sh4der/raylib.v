@@ -10,8 +10,6 @@
 *   Copyright (c) 2013-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-
-
 import raylibv as r
 
 const screen_width = 800
@@ -22,7 +20,6 @@ const screen_height = 450
 //------------------------------------------------------------------------------------
 
 fn main() {
-
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	r.init_window(screen_width, screen_height, 'raylib [core] example - window should close'.str)
@@ -45,11 +42,10 @@ fn main() {
 
 		if exit_window_requested {
 			// A request for close window has been issued, we can save data before closing
-            // or just show a message asking for confirmation
+			// or just show a message asking for confirmation
 			if r.is_key_down(r.key_y) {
 				exit_window = true
-			}
-			else if r.is_key_down(r.key_n) {
+			} else if r.is_key_down(r.key_n) {
 				exit_window_requested = false
 			}
 		}
@@ -59,18 +55,17 @@ fn main() {
 		//----------------------------------------------------------------------------------
 		r.begin_drawing()
 
-			r.clear_background(r.raywhite)
+		r.clear_background(r.raywhite)
 
-				if exit_window_requested {
-					r.draw_rectangle(0, 100, screen_width, 200, r.black)
-					r.draw_text("Are you sure you want to exit program? [Y/N]".str, 40, 180, 30, r.white)
-				}
-				else {
-					r.draw_text("Try to close the window to get confirmation message!".str, 120, 200, 20, r.lightgray)
-				}
+		if exit_window_requested {
+			r.draw_rectangle(0, 100, screen_width, 200, r.black)
+			r.draw_text('Are you sure you want to exit program? [Y/N]'.str, 40, 180, 30,
+				r.white)
+		} else {
+			r.draw_text('Try to close the window to get confirmation message!'.str, 120,
+				200, 20, r.lightgray)
+		}
 
 		r.end_drawing()
-
-
 	}
 }

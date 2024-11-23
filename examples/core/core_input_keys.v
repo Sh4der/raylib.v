@@ -10,8 +10,6 @@
 *   Copyright (c) 2014-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-
-
 import raylibv as r
 
 const screen_width = 800
@@ -22,16 +20,18 @@ const screen_height = 450
 //------------------------------------------------------------------------------------
 
 fn main() {
-
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	r.init_window(screen_width, screen_height, 'raylib [core] example - keyboard input'.str)
 
-	mut ball_position := r.Vector2{ x: screen_width / 2, y: screen_height / 2 }
+	mut ball_position := r.Vector2{
+		x: screen_width / 2
+		y: screen_height / 2
+	}
 
 	r.set_target_fps(60) // Set our game to run at 60 frames-per-second
 
-	for !r.window_should_close(){
+	for !r.window_should_close() {
 		// Update
 		//----------------------------------------------------------------------------------
 		if r.is_key_down(r.key_right) {
@@ -39,7 +39,7 @@ fn main() {
 		}
 		if r.is_key_down(r.key_left) {
 			ball_position.x -= 2
-		}		
+		}
 		if r.is_key_down(r.key_up) {
 			ball_position.y -= 2
 		}
@@ -57,8 +57,7 @@ fn main() {
 	}
 
 	// De-Initialization
-    //--------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------
 	r.close_window()
-    //--------------------------------------------------------------------------------------
-
+	//--------------------------------------------------------------------------------------
 }

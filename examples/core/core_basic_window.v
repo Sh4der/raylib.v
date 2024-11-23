@@ -23,7 +23,6 @@
 *   Copyright (c) 2013-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-
 import raylibv as r
 
 const screen_width = 800
