@@ -2005,10 +2005,16 @@ pub fn draw_rectangle_rounded(rec Rectangle, roundness f32, segments int, color 
 	C.DrawRectangleRounded(rec, roundness, segments, color)
 }
 
-fn C.DrawRectangleRoundedLines(rec Rectangle, roundness f32, segments int, lineThick f32, color Color)
+fn C.DrawRectangleRoundedLines(rec Rectangle, roundness f32, segments int, color Color)
 @[inline]
-pub fn draw_rectangle_rounded_lines(rec Rectangle, roundness f32, segments int, lineThick f32, color Color) {
-	C.DrawRectangleRoundedLines(rec, roundness, segments, lineThick, color)
+pub fn draw_rectangle_rounded_lines(rec Rectangle, roundness f32, segments int, color Color) {
+	C.DrawRectangleRoundedLines(rec, roundness, segments, color)
+}
+
+fn C.DrawRectangleRoundedLinesEx(rec Rectangle, roundness f32, segments int, lineThick f32, color Color)
+@[inline]
+pub fn draw_rectangle_rounded_lines_ex(rec Rectangle, roundness f32, segments int, lineThick f32, color Color) {
+	C.DrawRectangleRoundedLinesEx(rec, roundness, segments, lineThick, color)
 }
 
 fn C.DrawTriangle(v1 Vector2, v2 Vector2, v3 Vector2, color Color)

@@ -5,7 +5,7 @@ module raylibv
 #include "@VMODROOT/raylib/src/rlgl.h"
 #include "@VMODROOT/raylib/src/raymath.h"
 
-#flag -DPLATFORM_DESKTOP
+#flag -DPLATFORM_DESKTOP -D_GLFW_X11
 
 #flag -I @VMODROOT/raylib/src/external/glfw/include
 

@@ -1,4 +1,3 @@
-// @[translated]
 module raylibv
 
 //*************************************************  rlgl v4.5 - A multi-OpenGL abstraction layer with an immediate-mode style API
@@ -4641,10 +4640,10 @@ pub fn rl_unload_vertex_buffer(vbo_id u32) {
 	C.rlUnloadVertexBuffer(vbo_id)
 }
 
-fn C.rlSetVertexAttribute(index u32, comp_size int, type_ int, normalized bool, stride int, pointer voidptr)
+fn C.rlSetVertexAttribute(index u32, comp_size int, type_ int, normalized bool, stride int, offset int)
 @[inline]
-pub fn rl_set_vertex_attribute(index u32, comp_size int, type_ int, normalized bool, stride int, pointer voidptr) {
-	C.rlSetVertexAttribute(index, comp_size, type_, normalized, stride, pointer)
+pub fn rl_set_vertex_attribute(index u32, comp_size int, type_ int, normalized bool, stride int, offset int) {
+	C.rlSetVertexAttribute(index, comp_size, type_, normalized, stride, offset)
 }
 
 fn C.rlSetVertexAttributeDivisor(index u32, divisor int)
@@ -4695,10 +4694,10 @@ pub fn rl_load_texture_depth(width int, height int, use_render_buffer bool) u32 
 	return C.rlLoadTextureDepth(width, height, use_render_buffer)
 }
 
-fn C.rlLoadTextureCubemap(data voidptr, size int, format int) u32
+fn C.rlLoadTextureCubemap(data voidptr, size int, format int, mipmapCount int) u32
 @[inline]
-pub fn rl_load_texture_cubemap(data voidptr, size int, format int) u32 {
-	return C.rlLoadTextureCubemap(data, size, format)
+pub fn rl_load_texture_cubemap(data voidptr, size int, format int, mipmapCount int) u32 {
+	return C.rlLoadTextureCubemap(data, size, format, mipmapCount)
 }
 
 fn C.rlUpdateTexture(id u32, offset_x int, offset_y int, width int, height int, format int, data voidptr)
@@ -4743,10 +4742,10 @@ pub fn rl_read_screen_pixels(width int, height int) &u8 {
 	return C.rlReadScreenPixels(width, height)
 }
 
-fn C.rlLoadFramebuffer(width int, height int) u32
+fn C.rlLoadFramebuffer() u32
 @[inline]
-pub fn rl_load_framebuffer(width int, height int) u32 {
-	return C.rlLoadFramebuffer(width, height)
+pub fn rl_load_framebuffer() u32 {
+	return C.rlLoadFramebuffer()
 }
 
 fn C.rlFramebufferAttach(fbo_id u32, tex_id u32, attach_type int, tex_type int, mip_level int)
